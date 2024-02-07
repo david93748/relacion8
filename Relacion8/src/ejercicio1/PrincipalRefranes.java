@@ -27,25 +27,23 @@ public class PrincipalRefranes {
 		int opcion = 0;
 		String cadenaRefran;
 		int popularidad;
-		
+
 		switch (opcion) {
 		case 1:
 			try {
-				
-			
-			System.out.println("Introduce un refran:");
-			cadenaRefran=teclado.nextLine();
-			System.out.println("Introduce su popularidad 1-100");
-			popularidad=Integer.parseInt(teclado.nextLine());
-			
-			refranes[numeroRealRefranes]=new Refran(cadenaRefran, popularidad);
-			numeroRealRefranes++;
-			
-		}catch(RefranException e) {
-		System.out.println(e.getMessage());
-		}
-	
-			
+
+				System.out.println("Introduce un refran:");
+				cadenaRefran = teclado.nextLine();
+				System.out.println("Introduce su popularidad 1-100");
+				popularidad = Integer.parseInt(teclado.nextLine());
+
+				refranes[numeroRealRefranes] = new Refran(cadenaRefran, popularidad);
+				numeroRealRefranes++;
+
+			} catch (RefranException e) {
+				System.out.println(e.getMessage());
+			}
+
 			break;
 
 		default:
@@ -53,7 +51,7 @@ public class PrincipalRefranes {
 			break;
 		}
 
-	return 0;
+		return 0;
 
 	}
 

@@ -1,5 +1,6 @@
 package ejercicio1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PrincipalRefranes {
@@ -17,16 +18,17 @@ public class PrincipalRefranes {
 		do {
 			opc = mostrarMenu();
 
-			numeroRealRefranes = tratarMenu(refranes, numeroRealRefranes);
+			numeroRealRefranes = tratarMenu(refranes, numeroRealRefranes, opc);
 
 		} while (opc != 4);
 
 	}
 
-	private static int tratarMenu(Refran[] refranes, int numeroRealRefranes) {
-		int opcion = 0;
-		String cadenaRefran;
+	private static int tratarMenu(Refran[] refranes, int numeroRealRefranes, int opcion) {
+		String cadenaRefran, palabraBuscar;
 		int popularidad;
+		boolean estaRepetido = false;
+		Refran refranEncontrado = null;
 
 		switch (opcion) {
 		case 1:
@@ -37,11 +39,41 @@ public class PrincipalRefranes {
 				System.out.println("Introduce su popularidad 1-100");
 				popularidad = Integer.parseInt(teclado.nextLine());
 
-				refranes[numeroRealRefranes] = new Refran(cadenaRefran, popularidad);
-				numeroRealRefranes++;
+				estaRepetido = comprobarRepetido(cadenaRefran, refranes);
+
+				if (estaRepetido == false) {
+					refranes[numeroRealRefranes] = new Refran(cadenaRefran, popularidad);
+					numeroRealRefranes++;
+				} else {
+					System.out.println("El refran esta repetido");
+				}
 
 			} catch (RefranException e) {
 				System.out.println(e.getMessage());
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.err.println("Numero maximo de refranes alcanzado");
+			}
+
+			break;
+
+		case 2:
+			System.out.println("Introduce la palabra a buscar:");
+			palabraBuscar = teclado.nextLine();
+
+			refranEncontrado = buscarRefran(palabraBuscar, refranes);
+			System.out.println(refranEncontrado);
+
+			break;
+
+		case 3:
+
+			Arrays.sort(refranes, 0, numeroRealRefranes);
+
+			for (int i = 0; i < refranes.length; i++) {
+
+				if (refranes[i] != null) {
+					System.out.println(refranes[i]);
+				}
 			}
 
 			break;
@@ -51,7 +83,7 @@ public class PrincipalRefranes {
 			break;
 		}
 
-		return 0;
+		return numeroRealRefranes;
 
 	}
 
@@ -67,6 +99,37 @@ public class PrincipalRefranes {
 		opcion = Integer.parseInt(teclado.nextLine());
 
 		return opcion;
+	}
+
+	public static boolean comprobarRepetido(String cadenarefran, Refran[] refranes) {
+		boolean estaRepetido = false;
+
+		for (int i = 0; i < refranes.length && estaRepetido == false; i++) {
+			if (refranes[i] != null) {
+				if (refranes[i].getNombre().equals(cadenarefran)) {
+					estaRepetido = true;
+				}
+			}
+		}
+
+		return estaRepetido;
+	}
+
+	public static Refran buscarRefran(String palabraBuscar, Refran[] refranes) {
+		Refran refranEncontrado = null;
+		boolean encontrado = false;
+
+		palabraBuscar = palabraBuscar.toUpperCase();
+
+		for (int i = 0; i < refranes.length && encontrado == false; i++) {
+			if (refranes[i] != null) {
+				if (refranes[i].getNombre().contains(palabraBuscar)) {
+					refranEncontrado = refranes[i];
+					encontrado = true;
+				}
+			}
+		}
+		return refranEncontrado;
 	}
 
 }

@@ -52,7 +52,7 @@ public class Refran implements Comparable<Refran>{
 	}
 	@Override
 	public int compareTo(Refran otro) {
-		return this.popularidad-otro.popularidad;
+		return otro.popularidad-this.popularidad;
 	};
 	
 	

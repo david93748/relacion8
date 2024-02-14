@@ -77,6 +77,12 @@ public class PrincipalRefranes {
 			}
 
 			break;
+			
+		case 4:
+			
+			System.out.println("Adios");
+			
+			break;
 
 		default:
 			System.out.println("opcion incorrecta");
@@ -101,12 +107,12 @@ public class PrincipalRefranes {
 		return opcion;
 	}
 
-	public static boolean comprobarRepetido(String cadenarefran, Refran[] refranes) {
+	public static boolean comprobarRepetido(String cadenaRefran, Refran[] refranes) {
 		boolean estaRepetido = false;
 
 		for (int i = 0; i < refranes.length && estaRepetido == false; i++) {
 			if (refranes[i] != null) {
-				if (refranes[i].getNombre().equals(cadenarefran)) {
+				if (refranes[i].getNombre().equals(cadenaRefran)) {
 					estaRepetido = true;
 				}
 			}

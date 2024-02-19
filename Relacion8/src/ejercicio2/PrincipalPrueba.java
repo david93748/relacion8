@@ -14,7 +14,7 @@ public class PrincipalPrueba {
 
 		}
 		
-		System.out.println(Arrays.toString(baraja1.getArrayCartas()));
+	//	System.out.println(Arrays.toString(baraja1.getArrayCartas()));
 		System.out.println(baraja1.getCartasRestantes());
 		
 		try {
@@ -23,7 +23,7 @@ public class PrincipalPrueba {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(Arrays.toString(baraja1.getArrayCartas()));
+	//	System.out.println(Arrays.toString(baraja1.getArrayCartas()));
 		System.out.println(baraja1.getCartasRestantes());
 		
 

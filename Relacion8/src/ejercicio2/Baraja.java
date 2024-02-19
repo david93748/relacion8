@@ -1,11 +1,10 @@
 package ejercicio2;
 
-import java.util.Iterator;
 
 public class Baraja {
 
-	Carta arrayCartas[];
-	int cartasRestantes;
+	private Carta arrayCartas[];
+	private int cartasRestantes;
 
 	public static final int TOTAL_CARTAS = 48;
 	public static final int NUMERO_MAXIMO_PALO = 12;
@@ -29,14 +28,23 @@ public class Baraja {
 
 	}
 
-	public Carta[] getArrayCartas() {
-		return arrayCartas;
-	}
-
 	public int getCartasRestantes() {
 		return cartasRestantes;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder info=new StringBuilder();
+		for (Carta carta: arrayCartas) {
+			if ( carta!=null) {
+				info.append(carta + " , ");
+			}
+		}
+		return "Baraja [arrayCartas=" + info.toString() + ", cartasRestantes=" + cartasRestantes + "]";
+	}
+
 	public Carta repartirCartas() throws CartaException {
 		if(cartasRestantes<=0) {
 			throw new CartaException("No quedan cartas");
@@ -64,6 +72,9 @@ public class Baraja {
 		}
 		if(numeroCartas>cartasRestantes) {
 			throw new CartaException("No hay suficientes cartas");
+		}
+		if(numeroCartas<=0) {
+			throw new CartaException("No se pueden pedir cartas negativas");
 		}
 		
 		Carta[] cartas1=new Carta[numeroCartas];

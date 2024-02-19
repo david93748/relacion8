@@ -11,6 +11,7 @@ public class PrincipalJuego {
 		Baraja baraja1 = null;
 		int cartasRepartir;
 		Carta cartas1[] = null;
+		Carta cartas2[] = null;
 
 
 		try {
@@ -26,11 +27,15 @@ public class PrincipalJuego {
 				cartas1[i] = baraja1.repartirCartas();
 			}
 			
+			cartas2 = baraja1.repartirCartas(cartasRepartir);
+			
 			System.out.println("Cartas del jugador 1");
 			System.out.println(Arrays.toString(cartas1));
 			
 			System.out.println("Cartas del jugador 2");
-			System.out.println(Arrays.toString(baraja1.repartirCartas(cartasRepartir)));
+			System.out.println(Arrays.toString(cartas2));
+			
+			System.out.println(baraja1);
 			
 		} catch (CartaException e) {
 			System.out.println(e.getMessage());

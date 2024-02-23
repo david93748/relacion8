@@ -1,4 +1,4 @@
-package ejercicio3;
+ package ejercicio3;
 
 import java.util.Arrays;
 
@@ -17,7 +17,6 @@ public class Hotel {
 		}
 
 		int total = simples + dobles + triples;
-		String tipoActual = null;
 		int numeroHabitacion = 0;
 		int cantidadPorTipo[] = { simples, dobles, triples };
 
